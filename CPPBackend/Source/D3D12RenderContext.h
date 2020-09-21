@@ -32,11 +32,17 @@ private:
 	void CreateSwapChain();
 	void CreateViewPort();
 	void CreateScissorRect();
+	void CreateRTVs();
+	void CreateCommandLists();
+	void CreateSyncObjects();
 
+	void WaitForGPU();
+	void MoveToNextFrame();
 protected:
 	static const uint8_t m_FrameBufferCount = 3;
 	D3D12_VIEWPORT m_Client_ViewPort;
 	D3D12_RECT m_Client_ScissorRect;
+	UINT m_RTVDescriptorIncrementSize;
 
 	// CPU/GPU Syncronization
 	int						m_FrameIndex = 0;
@@ -49,12 +55,14 @@ protected:
 	ComPtr<IDXGIFactory4> m_pDxgiFactory;
 
 	ComPtr<IDXGISwapChain3> m_pSwapChain;
-	
+	ComPtr<ID3D12Resource> m_pRenderTargets[m_FrameBufferCount];
+
 	ComPtr<ID3D12GraphicsCommandList> m_pCommandList;
-	ComPtr<ID3D12CommandAllocator> m_pCommandAllocator;
+	ComPtr<ID3D12CommandAllocator> m_pCommandAllocators[m_FrameBufferCount];
 	ComPtr<ID3D12CommandQueue> m_pCommandQueue;
 	ComPtr<ID3D12PipelineState> m_pPipelineState;
-	
+	ComPtr<ID3D12DescriptorHeap> m_pRTVHeap;
+
 	DXGI_SAMPLE_DESC m_SampleDesc = {};
 
 	// Resources

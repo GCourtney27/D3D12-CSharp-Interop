@@ -37,6 +37,7 @@ project("CPPBackend")
 
     includedirs
     {
+        "%{prj.name}/Vendor/Microsoft/DX12/",
         "Source/"
     }
 

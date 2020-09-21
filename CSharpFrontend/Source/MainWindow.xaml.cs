@@ -39,7 +39,10 @@ namespace DX11OnCSharp
             IntPtr hWnd = (IntPtr)FindWindow("MainWindow", null);
 
             renderer.Init(hWnd);
-            renderer.RenderFrame();
+            while(true)
+            {
+                renderer.RenderFrame();
+            }
             //renderer.Init()
             //renderer.SendMessage(Msg);
         }
