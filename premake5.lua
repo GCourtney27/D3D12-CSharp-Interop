@@ -29,6 +29,12 @@ project("CPPBackend")
         "%{prj.name}/Source/**.cpp"
     }
 
+    links
+    {
+		"d3d12.lib",
+		"dxgi.lib",
+    }
+
     includedirs
     {
         "Source/"
@@ -46,11 +52,12 @@ project("CPPBackend")
 			"MultiProcessorCompile"
 		}
 
-        -- postbuildcommands
-		-- {
-		-- 	("{COPY} ../bin/" .. outputdir .. "/%{prj.name}/%{prj.targetname}.dll ../bin/"..outputdir.."/CSharpFrontend"),
-		-- 	("{COPY} ../bin/" .. outputdir .. "/%{prj.name}/%{prj.targetname}.lib ../bin/"..outputdir.."/CSharpFrontend"),
-        -- }
+        postbuildcommands
+		{
+			("{COPY} ../bin/" .. outputdir .. "/%{prj.name}/%{prj.targetname}.dll ../bin/"..outputdir.."/CSharpFrontend"),
+			("{COPY} ../bin/" .. outputdir .. "/%{prj.name}/%{prj.targetname}.lib ../bin/"..outputdir.."/CSharpFrontend"),
+        }
+
 
 project("NativeCodeWrapper")
     location("NativeCodeWrapper")

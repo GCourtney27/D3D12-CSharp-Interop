@@ -23,7 +23,9 @@ namespace DX11OnCSharp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public void @HI() { }
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +36,12 @@ namespace DX11OnCSharp
         {
             String Msg = "Hello World";
             Renderer renderer = new Renderer();
-            renderer.SendMessage(Msg);
+            IntPtr hWnd = (IntPtr)FindWindow("MainWindow", null);
+
+            renderer.Init(hWnd);
+            renderer.RenderFrame();
+            //renderer.Init()
+            //renderer.SendMessage(Msg);
         }
     }
 }

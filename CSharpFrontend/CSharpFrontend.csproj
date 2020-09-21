@@ -20,8 +20,7 @@
     <OutputPath>..\Bin\Debug-windows-x86_64\CSharpFrontend\</OutputPath>
     <BaseIntermediateOutputPath>..\Bin-Int\Debug-windows-x86_64\CSharpFrontend\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -32,8 +31,7 @@
     <OutputPath>..\Bin\Release-windows-x86_64\CSharpFrontend\</OutputPath>
     <BaseIntermediateOutputPath>..\Bin-Int\Release-windows-x86_64\CSharpFrontend\</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -91,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NativeCodeWrapper\NativeCodeWrapper.vcxproj">
-      <Project>{6806c89d-d41c-c633-1d94-515589e996bb}</Project>
+      <Project>{6806C89D-D41C-C633-1D94-515589E996BB}</Project>
       <Name>NativeCodeWrapper</Name>
     </ProjectReference>
   </ItemGroup>

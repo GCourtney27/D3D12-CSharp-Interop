@@ -68,8 +68,13 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d12.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\Bin\Debug-windows-x86_64\CPPBackend\CPPLib.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.dll ..\bin\Debug-windows-x86_64\CSharpFrontend &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.dll ..\bin\Debug-windows-x86_64\CSharpFrontend &gt; nul)
+IF EXIST ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.lib\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.lib ..\bin\Debug-windows-x86_64\CSharpFrontend &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\$(ProjectName)\CPPLib.lib ..\bin\Debug-windows-x86_64\CSharpFrontend &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -85,16 +90,24 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d12.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\Bin\Release-windows-x86_64\CPPBackend\CPPLib.lib</ImportLibrary>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.dll ..\bin\Release-windows-x86_64\CSharpFrontend &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.dll ..\bin\Release-windows-x86_64\CSharpFrontend &gt; nul)
+IF EXIST ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.lib ..\bin\Release-windows-x86_64\CSharpFrontend &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\$(ProjectName)\CPPLib.lib ..\bin\Release-windows-x86_64\CSharpFrontend &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\DX12Renderer.h" />
+    <ClInclude Include="Source\Core.h" />
+    <ClInclude Include="Source\D3D12RenderContext.h" />
+    <ClInclude Include="Source\RenderContext.h" />
     <ClInclude Include="Source\framework.h" />
     <ClInclude Include="Source\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\DX12Renderer.cpp" />
+    <ClCompile Include="Source\D3D12RenderContext.cpp" />
+    <ClCompile Include="Source\RenderContext.cpp" />
     <ClCompile Include="Source\dllmain.cpp" />
     <ClCompile Include="Source\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
